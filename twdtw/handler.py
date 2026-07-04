@@ -58,7 +58,7 @@ class Internals:
 
 		JB (np.ndarray): End column of each best match.
 
-		matches (Matches): The reduced :class:`Matches`.
+		matches (Matches): The reduced `Matches`.
 
 		time_weight (tuple[float, float]): Logistic ``(steepness, midpoint)``
 			parameters.
@@ -88,7 +88,7 @@ class Internals:
 	"""End column of each best match."""
 
 	matches: Matches
-	"""The reduced :class:`Matches`."""
+	"""The reduced `Matches`."""
 
 	time_weight: tuple[float, float]
 	"""Logistic ``(steepness, midpoint)`` parameters."""
@@ -189,8 +189,8 @@ def _shape_output(
 		length (float): Resolved numeric cycle length.
 
 	Returns:
-		float | Matches | Internals: The minimum distance, the :class:`Matches`,
-			or the :class:`Internals`.
+		float | Matches | Internals: The minimum distance, the `Matches`,
+			or the `Internals`.
 
 	Raises:
 		ValueError: If `output` is not a recognised value.
@@ -237,9 +237,9 @@ def twdtw_dispatch(
 	max_elapsed: float = np.inf,
 	output: Literal["distance", "matches", "internals"] = "distance",
 ) -> float | Matches | Internals:
-	"""Array TWDTW implementation and :func:`functools.singledispatch` base.
+	"""Array TWDTW implementation and `functools.singledispatch` base.
 
-	See :func:`twdtw` for the full parameter documentation.
+	See `twdtw` for the full parameter documentation.
 	"""
 	# get the logistic parameters
 	alpha, beta = time_weight
@@ -304,26 +304,26 @@ def twdtw(*args: object, **kwargs: object) -> float | Matches | Internals:
 		y_time (npt.ArrayLike): Observation times for ``y``.
 
 		time_weight (tuple[float, float]): Logistic ``(steepness, midpoint)``
-			time-weight parameters.
+										   time-weight parameters.
 
 		cycle_length (str | float): Temporal cycle as a name (e.g. ``"year"``)
-			or a number.
+									or a number.
 
 		time_scale (str): Unit used when wrapping a numeric ``cycle_length``.
 
 		origin (np.datetime64 | str | None): Reference date for numeric cycles.
-			``None`` uses the earliest time.
+											 ``None`` uses the earliest time.
 
 		max_elapsed (float): Maximum cyclic elapsed time allowed for a local
-			match.
+							 match.
 
 		output (Literal["distance", "matches", "internals"]): One of
 			``"distance"``, ``"matches"`` or ``"internals"``.
 
 	Returns:
 		float | Matches | Internals: The minimum match distance (``float``) for
-			``"distance"``, a :class:`Matches` for ``"matches"``, or an
-			:class:`Internals` for ``"internals"``.
+			``"distance"``, a `Matches` for ``"matches"``, or an
+			`Internals` for ``"internals"``.
 
 	Raises:
 		TypeError: If the series ``x`` is not provided.
