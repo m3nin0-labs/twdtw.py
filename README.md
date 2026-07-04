@@ -1,4 +1,4 @@
-## twdtw
+# twdtw
 
 Time-Weighted Dynamic Time Warping (TWDTW, [Maus et al. 2016](https://doi.org/10.1109/JSTARS.2016.2517118)) for Python. 
 
