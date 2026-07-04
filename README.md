@@ -1,10 +1,10 @@
 ## twdtw
 
-Python package implementing **Time-Weighted Dynamic Time Warping** (TWDTW, Maus et al. 2016), a seasonality-aware variant of DTW for matching a temporal *pattern* against a long satellite/environmental *time series*.
+Time-Weighted Dynamic Time Warping (TWDTW, [Maus et al. 2016](https://doi.org/10.1109/JSTARS.2016.2517118)) for Python. 
 
 ## Install
 
-The package is managed with [uv](https://docs.astral.sh/uv/). A bare install builds the C++ core and pulls numpy only:
+The package is managed with [uv](https://docs.astral.sh/uv/). A base installation builds the C++ core and pulls numpy only:
 
 ```bash
 uv sync
@@ -54,7 +54,7 @@ twdtw(
 )
 ```
 
-Ask for `output="matches"` to get every matching subinterval instead of just the best distance:
+To get every matching subinterval instead of just the best distance you can use the `output` parameter:
 
 ```python
 twdtw(
@@ -68,11 +68,11 @@ twdtw(
 )
 ```
 
-Any array-like (lists, tuples, `numpy.ndarray`) works for the values and times.
+Note: Any array-like (lists, tuples, `numpy.ndarray`) works for the values (`x` and `y`) and times (`x_time` and `y_time`).
 
 ## From a DataFrame (polars)
 
-With the `polars` extra installed, the same `twdtw` accepts polars frames directly. Time and band values already travel together in a frame, so there are no parallel time arrays to pass:
+With the `polars` installed, the same `twdtw` accepts polars frames directly. Time and band values already travel together in a frame, so there are no parallel time arrays to pass:
 
 ```python
 import polars as pl
