@@ -4,7 +4,7 @@ Time-Weighted Dynamic Time Warping (TWDTW, [Maus et al. 2016](https://doi.org/10
 
 ## Install
 
-The package is managed with [uv](https://docs.astral.sh/uv/). A base installation builds the C++ core and pulls numpy only:
+The package is managed with [uv](https://docs.astral.sh/uv/). A base installation builds the C++ core and pulls numpy:
 
 ```bash
 uv sync
