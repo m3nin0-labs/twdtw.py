@@ -1,0 +1,60 @@
+[build-system]
+requires = ["scikit-build-core>=0.10", "nanobind>=2.0"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "twdtw"
+version = "0.1.0"
+description = "Time-Weighted Dynamic Time Warping Python Package"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "GPL-3.0-or-later" }
+authors = [{ name = "Felipe Carlos" }]
+keywords = ["dtw", "twdtw", "time series", "remote sensing", "phenology"]
+dependencies = ["numpy>=1.23"]
+
+[project.optional-dependencies]
+polars = ["polars>=1.0"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+    "mypy>=1.11",
+    "jupytext>=1.19.4",
+]
+examples = ["polars>=1.0", "pygam>=0.9", "tqdm>=4.66"]
+
+[tool.scikit-build]
+minimum-version = "0.10"
+build-dir = "build/{wheel_tag}"
+wheel.py-api = "cp312"
+
+[tool.scikit-build.cmake.define]
+CMAKE_BUILD_TYPE = "Release"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.format]
+indent-style = "tab"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E101"]  # tab indent + space-aligned docstring continuations
+
+[tool.ruff.lint.per-file-ignores]
+"examples/*" = ["B018"]  # bare expressions render as notebook cell output
+
+[tool.mypy]
+python_version = "3.10"
+disallow_untyped_defs = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = ["twdtw.corecpp"]
+ignore_missing_imports = true
